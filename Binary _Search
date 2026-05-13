@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+/**
+ * Software Engineering Department
+ * Assignment: Binary Search Algorithm
+ * Note: Data must be sorted for this algorithm to work
+ */
+
+int main() {
+    // Names sorted alphabetically for Binary Search logic
+    string names[5] = {"Ahmed", "Eslam", "Khalid", "Mona", "Sara"};
+    int ages[5] = {30, 45, 50, 18, 20};
+    
+    string key;
+    bool found = false;
+
+    cout << "Enter name to search: ";
+    cin >> key;
+
+    int low = 0;
+    int high = 4;
+
+    // Binary Search: dividing the search area in half
+    while (low <= high) {
+        int mid = (low + high) / 2;
+
+        if (names[mid] == key) {
+            cout << key << " was found and is aged " << ages[mid] << endl;
+            found = true;
+            break;
+        }
+        else if (key > names[mid]) {
+            low = mid + 1;
+        }
+        else {
+            high = mid - 1;
+        }
+    }
+
+    if (!found) {
+        cout << "Not found" << endl;
+    }
+
+    return 0;
+}
